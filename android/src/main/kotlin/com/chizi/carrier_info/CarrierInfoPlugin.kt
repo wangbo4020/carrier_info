@@ -36,19 +36,19 @@ class CarrierInfoPlugin: FlutterPlugin,
 
   override fun onAttachedToActivity(binding: ActivityPluginBinding) {
     handler?.setActivity(binding.activity)
+    binding.addRequestPermissionsResultListener(this)
   }
 
   override fun onDetachedFromActivityForConfigChanges() {
-    handler?.setActivity(null)
+    onDetachedFromActivity()
   }
 
   override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
     onAttachedToActivity(binding)
-    binding.addRequestPermissionsResultListener(this)
   }
 
   override fun onDetachedFromActivity() {
-    onDetachedFromActivity()
+    handler?.setActivity(null)
   }
   private fun teardownChannel() {
     channel?.setMethodCallHandler(null)
