@@ -11,3 +11,7 @@ build/
 *.ipr
 *.iws
 .idea/
+.vscode/
+*.iml
+ios/.generated/
+.atom/
